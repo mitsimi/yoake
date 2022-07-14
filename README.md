@@ -1,2 +1,158 @@
-# starigon
- 
+# StariGo - A Simple Tool for managing start up applications
+
+A simple yet intuitive cli tool for managing windows start up applications.
+
+## Install
+
+```sh
+ go install github.com/mitsimi/starigo@latest
+```
+
+[Find latest Release Here](https://github.com/mitsimi/stariGo/releases/latest)
+
+Or just download the binary from releases page and put it in your PATH.
+
+## Features
+
+- [ ] Add an application to startup
+- [ ] Remove an application from startup
+- [ ] List all applications in startup
+- [ ] List a specific added application
+- [ ] Enable or disable an application from startup
+- [ ] Enable or disable starigo startup
+- [ ] Show current set delay for startup applications
+- [ ] Change delay for startup applications
+
+## Usage
+
+### Available Commands
+
+```sh
+    starigo help
+
+    starigo add <app_name>
+    starigo rm <app_name>
+
+    starigo list
+    starigo list <app_name>
+
+    starigo enable <app_name>
+    starigo disable <app_name>
+
+    starigo start
+    starigo stop
+
+    starigo delay
+    starigo delay <delay_time>
+```
+
+### Add an application to startup
+
+```sh
+$ starigo add <app_name> <app_path>
+```
+
+### Remove an application from startup
+
+`remove` is also aliased as `rm`
+
+```sh
+$ starigo remove <app_name>
+```
+
+```sh
+$ starigo rm <app_name>
+```
+
+### List all applications in startup
+
+`list` is also aliased as `ls` & `l`
+
+
+```sh
+$ starigo list
+```
+
+```sh
+$ starigo ls
+```
+
+```sh
+$ starigo l
+```
+
+### List a specific added application
+
+```sh
+$ starigo list <app_name>
+```
+
+```sh
+$ starigo ls <app_name>
+```
+
+```sh
+$ starigo l <app_name>
+```
+
+### Enable an application from startup
+
+`enable` is also aliased as `en`
+
+```sh
+$ starigo enable <app_name>
+```
+
+```sh
+$ starigo en <app_name>
+```
+
+### Disable an application from startup
+
+`disable` is also aliased as `dis`
+
+```sh
+$ starigo disable <app_name>
+```
+
+```sh
+$ starigo dis <app_name>
+```
+
+### Run starigo at startup
+
+```sh
+$ starigo start
+```
+
+### Stop starigo from running at startup
+
+```sh
+$ starigo stop
+```
+
+### Check current delay for startup
+
+`delay` is also aliased as `d`
+
+```sh
+$ starigo delay
+```
+
+### Set new delay for startup
+
+delay is in seconds.
+
+```sh
+$ starigo delay <delay_time>
+```
+
+## Defaults
+
+- Delay is set to 10 seconds
+- Config file location is `HOMEDIR/.sg/sg_appList.json`
+- LOG file location is `HOMEDIR/.sg/sg_startup.log`
+
+## LICENSE
+
+GPL-3.0
