@@ -1,6 +1,6 @@
-# StariGo - A Simple Tool for managing start up applications
+# StariGo - A Simple Tool for start up applications
 
-A simple yet intuitive cli tool for managing windows start up applications.
+Little cli program for easy and universal application start on startup for windows and linux.
 
 ## Install
 
@@ -12,8 +12,23 @@ A simple yet intuitive cli tool for managing windows start up applications.
 
 Or just download the binary from releases page and put it in your PATH.
 
+---
+
+## System Availability
+
+- [ ] Windows 10/11
+- [ ] Linux 
+  - [ ] KDE
+  - [ ] GNOME
+  - [ ] XFCE
+  - [ ] LXDE
+  - [ ] Mate 
+  - [ ] Cinnamon
+  - [ ] etc.
+
 ## Features
 
+- [ ] Initialize a starigo
 - [ ] Add an application to startup
 - [ ] Remove an application from startup
 - [ ] List all applications in startup
@@ -46,6 +61,11 @@ Or just download the binary from releases page and put it in your PATH.
     starigo delay <delay_time>
 ```
 
+### Initialize a starigo
+
+```sh
+    starigo init
+```
 ### Add an application to startup
 
 ```sh
@@ -150,9 +170,9 @@ $ starigo delay <delay_time>
 ## Defaults
 
 - Delay is set to 10 seconds
-- Config file location is `HOMEDIR/.sg/sg_appList.json`
-- LOG file location is `HOMEDIR/.sg/sg_startup.log`
+- Config file location is `HOMEDIR/.starigo/sg_appList.json`
+- LOG file location is `HOMEDIR/.sstarigo/sg_startup.log`
 
 ## LICENSE
+Starigo is released under the GPL-3.0 license. See [LICENSE](https://github.com/mitsimi/starigo/blob/main/LICENSE)
 
-GPL-3.0
