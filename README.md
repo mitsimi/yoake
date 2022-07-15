@@ -12,6 +12,21 @@ A simple yet intuitive cli tool for managing windows start up applications.
 
 Or just download the binary from releases page and put it in your PATH.
 
+---
+
+## DISCLAIMER
+
+The Linux version depends on the Desktop Environment autostarting applications inside the `~/.config/autostart` directory. 
+If your Desktop Environment does not use this directory, you may not be able to use the Linux version without any own work. 
+It is only needed that on start this application will be run.
+
+---
+
+## Platforms Supported
+
+- [ ] Windows
+- [ ] Linux
+
 ## Features
 
 - [ ] Add an application to startup
@@ -150,8 +165,8 @@ $ starigo delay <delay_time>
 ## Defaults
 
 - Delay is set to 10 seconds
-- Config file location is `HOMEDIR/.sg/sg_appList.json`
-- LOG file location is `HOMEDIR/.sg/sg_startup.log`
+- Config file `config.json` is located in the standard location for config files for your operating system.
+- LOG file `startup.log` is in the same directory as the config file.
 
 ## LICENSE
 
