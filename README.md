@@ -14,21 +14,22 @@ Or just download the binary from releases page and put it in your PATH.
 
 ---
 
-## System Availability
+## DISCLAIMER
 
-- [ ] Windows 10/11
-- [ ] Linux 
-  - [ ] KDE
-  - [ ] GNOME
-  - [ ] XFCE
-  - [ ] LXDE
-  - [ ] Mate 
-  - [ ] Cinnamon
-  - [ ] etc.
+The Linux version depends on the Desktop Environment autostarting applications inside the `~/.config/autostart` directory. 
+If your Desktop Environment does not use this directory, you may not be able to use the Linux version without any own work. 
+It is only needed that on start this application will be run.
+
+---
+
+## Platforms Supported
+
+- [ ] Windows
+- [ ] Linux
 
 ## Features
 
-- [ ] Initialize a starigo
+- [ ] Initialize starigo
 - [ ] Add an application to startup
 - [ ] Remove an application from startup
 - [ ] List all applications in startup
@@ -170,8 +171,8 @@ $ starigo delay <delay_time>
 ## Defaults
 
 - Delay is set to 10 seconds
-- Config file location is `HOMEDIR/.starigo/sg_appList.json`
-- LOG file location is `HOMEDIR/.sstarigo/sg_startup.log`
+- Config file `config.json` is located in the standard location for config files for your operating system.
+- LOG file `startup.log` is in the same directory as the config file.
 
 ## LICENSE
 Starigo is released under the GPL-3.0 license. See [LICENSE](https://github.com/mitsimi/starigo/blob/main/LICENSE)
