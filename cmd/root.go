@@ -12,6 +12,10 @@ import (
 
 var (
 	enabled bool
+
+	startup_dir     string
+	startup_file    string
+	startup_content func() string
 )
 
 var rootCmd = &cobra.Command{
@@ -36,11 +40,6 @@ func Execute() {
 }
 
 func init() {
-	var (
-		startup_dir     string
-		startup_file    string
-		startup_content func() string
-	)
 
 	// Check operating system
 	switch runtime.GOOS {
@@ -58,6 +57,11 @@ func init() {
 		cobra.CheckErr(fmt.Errorf("unsupported OS: %s", runtime.GOOS))
 	}
 
+	// Initialize startup directory and file
+	go initStartup()
+}
+
+func initStartup() {
 	// Check if startup directory exists
 	if _, err := os.Stat(startup_dir); os.IsNotExist(err) {
 		// Create startup directory
@@ -78,3 +82,19 @@ func init() {
 }
 
 // TODO: Initialize config file loading and management
+func initConfig() {
+	// Check if config directory exists
+	if _, err := os.Stat(env.ConfigDir()); os.IsNotExist(err) {
+		// Create config directory
+		err := os.Mkdir(env.ConfigDir(), 0755)
+		if err != nil {
+			env.WriteLog(err.Error())
+		}
+	}
+
+	// Check if config file exists
+	if _, err := os.Stat(env.ConfigFile()); os.IsNotExist(err) {
+		// TODO: Write config file with viper
+
+	}
+}

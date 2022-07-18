@@ -19,6 +19,10 @@ func ConfigDir() string {
 	return fmt.Sprintf("%s\\sg", home)
 }
 
+func ConfigFile() string {
+	return fmt.Sprintf("%s\\config.json", ConfigDir())
+}
+
 func BinaryDir() string {
 	return fmt.Sprintf("%s\\go\\bin", UserHomeDir())
 }
