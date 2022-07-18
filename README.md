@@ -16,9 +16,10 @@ Or just download the binary from releases page and put it in your PATH.
 
 ## DISCLAIMER
 
-The Linux version depends on the Desktop Environment autostarting applications inside the `~/.config/autostart` directory. 
-If your Desktop Environment does not use this directory, you may not be able to use the Linux version without any own work. 
-It is only needed that on start this application will be run.
+> The Linux version depends on the Desktop Environment autostarting applications inside the `~/.config/autostart` directory. 
+> If your Desktop Environment does not use this directory, you may not be able to use the Linux version without any own work. 
+>
+> If you are using a Window Manager, you must call the program in the init script.
 
 ---
 
@@ -65,7 +66,7 @@ It is only needed that on start this application will be run.
 ### Initialize a starigo
 
 ```sh
-    starigo init
+$ starigo init
 ```
 ### Add an application to startup
 
@@ -171,8 +172,12 @@ $ starigo delay <delay_time>
 ## Defaults
 
 - Delay is set to 10 seconds
-- Config file `config.json` is located in the standard location for config files for your operating system.
-- LOG file `startup.log` is in the same directory as the config file.
+- Config file `config.json` is located in the standard location for config files of your operating system.
+- Log file `startup.log` is in the same directory as the config file.
+
+Default location:
+- Windows: %AppData%
+- Linux: ~/.config
 
 ## LICENSE
 Starigo is released under the GPL-3.0 license. See [LICENSE](https://github.com/mitsimi/starigo/blob/main/LICENSE)

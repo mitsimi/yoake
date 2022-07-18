@@ -16,7 +16,7 @@ func UserHomeDir() string {
 func ConfigDir() string {
 	home, err := os.UserConfigDir()
 	cobra.CheckErr(err)
-	return fmt.Sprintf("%s\\sg", home)
+	return fmt.Sprintf("%s\\starigo", home)
 }
 
 func ConfigFile() string {
