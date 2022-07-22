@@ -18,16 +18,13 @@ var (
 )
 
 var rootCmd = &cobra.Command{
-	Use:     "starigo",
-	Short:   "Little cli program for easy and universal application start on startup",
-	Long:    `A simple yet intuitive cli tool for managing windows and linux start up applications.`,
-	Version: "0.1.0",
+	Use:       "starigo",
+	Short:     "Little cli program for easy and universal application start on startup",
+	Long:      `A simple yet intuitive cli tool for managing windows and linux start up applications.`,
+	Version:   "0.1.0",
+	ValidArgs: []string{"start", "stop", "enable", "disable", "add", "remove", "list", "delay", "help", "version"},
 	Run: func(cmd *cobra.Command, args []string) {
-		if enabled {
-			fmt.Println("enabled")
-		} else {
-			fmt.Println("disabled")
-		}
+		cmd.Help()
 	},
 }
 
@@ -96,7 +93,7 @@ func initConfig() {
 	// Configure viper
 	config := viper.New()
 	config.AddConfigPath(env.ConfigDir())
-	config.SetConfigType("dotenv")
+	config.SetConfigType("json")
 	config.SetConfigName("config")
 
 	// Read config file
