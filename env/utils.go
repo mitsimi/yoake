@@ -49,21 +49,21 @@ func LoadConfig() (config Configuration, err error) {
 
 	// Configure viper
 	viper.AddConfigPath(ConfigDir())
-	viper.SetConfigType("json")
-	viper.SetConfigName("config")
+	viper.SetConfigType(ConfigType)
+	viper.SetConfigName(ConfigName)
 
-	viper.Set("config", Config{
+	viper.SetDefault("config", Config{
 		Enabled: true,
 		Delay:   10,
 	})
-	viper.Set("apps", []App{})
+	viper.SetDefault("apps", []App{})
 
 	// Read config file
 	if err := viper.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
 			// Config file not found; ignore error if desired
 			WriteLog(err.Error())
-			WriteLog("Creating New Config File")
+			WriteLog(fmt.Sprintf("Creating New Config File \"%s.%s\"", ConfigName, ConfigType))
 
 			// Write config file
 			err := ioutil.WriteFile(ConfigFile(), nil, 0644)
@@ -71,7 +71,7 @@ func LoadConfig() (config Configuration, err error) {
 				WriteLog(err.Error())
 				return config, err
 			}
-			err = viper.WriteConfig()
+			err = WriteConfig()
 			if err != nil {
 				WriteLog(err.Error())
 				return config, err
@@ -91,4 +91,14 @@ func LoadConfig() (config Configuration, err error) {
 		return config, err
 	}
 	return
+}
+
+// TODO: Make it work
+func WriteConfig() (err error) {
+	// Write config file
+	err = viper.WriteConfig()
+	if err != nil {
+		return err
+	}
+	return nil
 }

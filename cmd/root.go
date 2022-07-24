@@ -4,26 +4,47 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"runtime"
+	"time"
 
 	"github.com/mitsimi/starigo/env"
 	"github.com/spf13/cobra"
 )
 
 var (
-	enabled bool
-
+	config  env.Configuration
 	startUp env.Startup
 )
 
 var rootCmd = &cobra.Command{
-	Use:       "starigo",
-	Short:     "Little cli program for easy and universal application start on startup",
-	Long:      `A simple yet intuitive cli tool for managing windows and linux start up applications.`,
-	Version:   "0.1.0",
-	ValidArgs: []string{"start", "stop", "enable", "disable", "add", "remove", "list", "delay", "help", "version"},
+	Use:     "starigo",
+	Short:   "Little cli program for easy and universal application start on startup",
+	Long:    `A simple yet intuitive cli tool for managing windows and linux start up applications.`,
+	Version: "0.1.0",
+	ValidArgs: []string{
+		"start", "stop",
+		"enable", "disable",
+		"add", "remove",
+		"list",
+		"delay",
+		"help",
+		"version",
+	},
 	Run: func(cmd *cobra.Command, args []string) {
-		cmd.Help()
+		fmt.Println(config)
+		if !config.Conf.Enabled {
+			fmt.Println("StariGo is disabled. Use 'starigo enable' to enable it.")
+			return
+		}
+
+		time.Sleep(time.Duration(config.Conf.Delay) * time.Second)
+		for _, app := range config.Apps {
+			if !app.Enabled {
+				continue
+			}
+			exec.Command(app.Path).Start()
+		}
 	},
 }
 
@@ -36,10 +57,11 @@ func Execute() {
 
 func init() {
 	// Initialize startup directory and file
-	//go initStartup()
+	go initStartup()
 
 	// Initialize config directory and file
-	_, err := env.LoadConfig()
+	var err error
+	config, err = env.LoadConfig()
 	if err != nil {
 		cobra.CheckErr(err)
 	}

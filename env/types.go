@@ -7,17 +7,17 @@ type Startup struct {
 }
 
 type Config struct {
-	Enabled bool  `json:"enabled"`
-	Delay   int32 `json:"delay"`
+	Enabled bool  `mapstructure:"enabled"`
+	Delay   int32 `mapstructure:"delay"`
 }
 
 type App struct {
-	Enabled bool   `json:"enabled"`
-	Name    string `json:"name"`
-	Path    string `json:"path"`
+	Enabled bool   `mapstructure:"enabled"`
+	Name    string `mapstructure:"name"`
+	Path    string `mapstructure:"path"`
 }
 
 type Configuration struct {
-	Conf Config `json:"config"`
-	Apps []App  `json:"apps"`
+	Conf Config `mapstructure:"config"`
+	Apps []App  `mapstructure:"apps"`
 }

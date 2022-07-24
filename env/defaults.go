@@ -7,6 +7,11 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const (
+	ConfigName = "config"
+	ConfigType = "json"
+)
+
 func UserHomeDir() string {
 	home, err := os.UserHomeDir()
 	cobra.CheckErr(err)
