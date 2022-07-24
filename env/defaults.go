@@ -15,8 +15,10 @@ func UserHomeDir() string {
 
 func ConfigDir() string {
 	home, err := os.UserConfigDir()
-	cobra.CheckErr(err)
-	return fmt.Sprintf("%s\\starigo", home)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return fmt.Sprintf("%s\\sg", home)
 }
 
 func ConfigFile() string {
@@ -31,7 +33,7 @@ func LogFile() string {
 	return fmt.Sprintf("%s\\startup.log", ConfigDir())
 }
 
-func WinStartupDir() string {
+func Win_StartupDir() string {
 	return fmt.Sprintf("%s\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup", UserHomeDir())
 }
 
@@ -39,10 +41,10 @@ func Win_Script() string {
 	return fmt.Sprintf("Set WshShell = CreateObject(\"WScript.Shell\")\nWshShell.Run chr(34) & \"%s\\starigo.exe\" & Chr(34), 0\nSet WshShell = Nothing", BinaryDir())
 }
 
-func LinuxStartupDir() string {
+func Linux_StartupDir() string {
 	return fmt.Sprintf("%s\\.config\\autostart", UserHomeDir())
 }
 
 func Linux_Desktop() string {
-	return "[Desktop Entry]\nType=Application\nName=StariGo\nExec=$HOME/go/bin/starigo\nStartupNotify=false\nTerminal=false"
+	return fmt.Sprintf("[Desktop Entry]\nType=Application\nName=StariGo\nExec=%s\\starigo\nStartupNotify=false\nTerminal=false", BinaryDir())
 }
