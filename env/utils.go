@@ -56,7 +56,7 @@ func LoadConfig() (config Configuration, err error) {
 		Enabled: true,
 		Delay:   10,
 	})
-	viper.SetDefault("apps", []App{})
+	viper.SetDefault("apps", map[string]App{})
 
 	// Read config file
 	if err := viper.ReadInConfig(); err != nil {
@@ -71,7 +71,7 @@ func LoadConfig() (config Configuration, err error) {
 				WriteLog(err.Error())
 				return config, err
 			}
-			err = WriteConfig()
+			viper.WriteConfig()
 			if err != nil {
 				WriteLog(err.Error())
 				return config, err
@@ -93,9 +93,10 @@ func LoadConfig() (config Configuration, err error) {
 	return
 }
 
-// TODO: Make it work
-func WriteConfig() (err error) {
-	// Write config file
+func WriteConfig(conf Configuration) (err error) {
+	viper.GetViper().Set("config", conf.Conf)
+	viper.GetViper().Set("apps", conf.Apps)
+
 	err = viper.WriteConfig()
 	if err != nil {
 		return err
