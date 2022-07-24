@@ -33,7 +33,7 @@ var addCmd = &cobra.Command{
 		}
 	},
 	PostRun: func(cmd *cobra.Command, args []string) {
-		listCmd.Run(cmd, []string{})
+		showCmd.Run(cmd, []string{})
 	},
 }
 

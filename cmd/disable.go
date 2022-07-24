@@ -24,14 +24,15 @@ var disableCmd = &cobra.Command{
 			app.Enabled = false
 			config.Apps[args[0]] = app
 
-			fmt.Printf("%s is now disabled!", args[0])
+			showCmd.Run(cmd, args)
 		}
 
 		if err := config.WriteConfig(); err != nil {
 			env.WriteLog(err.Error())
 			cobra.CheckErr(err)
 		}
-	}}
+	},
+}
 
 func init() {
 	rootCmd.AddCommand(disableCmd)

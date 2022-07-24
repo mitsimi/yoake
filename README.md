@@ -31,8 +31,8 @@ Little cli program for easy and universal application start on startup for windo
 - [x] Initialize starigo
 - [x] Add an application to startup
 - [x] Remove an application from startup
-- [ ] List all applications in startup
-- [ ] List information of a specific application
+- [x] List all applications in startup
+- [x] List information of a specific application
 - [x] Enable or disable an application from startup
 - [x] Enable or disable starigo startup
 - [x] Show current set delay for startup applications
@@ -48,7 +48,7 @@ Little cli program for easy and universal application start on startup for windo
     starigo add <app_name>
     starigo remove <app_name>
 
-    starigo list [app_name]
+    starigo show [app_name]
 
     starigo enable [app_name]
     starigo disable [app_name]
@@ -78,7 +78,15 @@ $ starigo rm <app_name>
 
 ### List all applications in startup
 
-`ls` & `l` are aliases for `list`
+`show` is aliased as `list`, `ls`
+
+```sh
+$ starigo show
+```
+is equivalent to
+```sh
+$ starigo show all
+```
 
 ```sh
 $ starigo list
@@ -88,22 +96,20 @@ $ starigo list
 $ starigo ls
 ```
 
-```sh
-$ starigo l
-```
+
 
 ### List information about a specific application
 
 ```sh
-$ starigo list <app_name>
+$ starigo show
 ```
 
 ```sh
-$ starigo ls <app_name>
+$ starigo list
 ```
 
 ```sh
-$ starigo l <app_name>
+$ starigo ls
 ```
 
 ### Enable starigo startup
