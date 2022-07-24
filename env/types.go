@@ -7,8 +7,8 @@ type Startup struct {
 }
 
 type Config struct {
-	Enabled bool  `mapstructure:"enabled"`
-	Delay   int32 `mapstructure:"delay"`
+	Enabled bool `mapstructure:"enabled"`
+	Delay   int  `mapstructure:"delay"`
 }
 
 type App struct {
