@@ -21,7 +21,7 @@ var rootCmd = &cobra.Command{
 	Use:     "starigo",
 	Short:   "Little cli program for easy and universal application start on startup",
 	Long:    `A simple yet intuitive cli tool for managing windows and linux start up applications.`,
-	Version: "0.1.0",
+	Version: "1.0.0",
 	ValidArgs: []string{
 		"enable", "disable",
 		"add", "remove",
