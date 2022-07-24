@@ -12,9 +12,9 @@ type Config struct {
 }
 
 type App struct {
-	Enabled bool   `mapstructure:"enabled"`
-	Name    string `mapstructure:"name"`
-	Path    string `mapstructure:"path"`
+	Enabled bool `mapstructure:"enabled"`
+	//	Name    string `mapstructure:"name"`
+	Path string `mapstructure:"path"`
 }
 
 type Configuration struct {

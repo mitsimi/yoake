@@ -27,8 +27,9 @@ var disableCmd = &cobra.Command{
 			fmt.Printf("%s is now disabled!", args[0])
 		}
 
-		if err := env.WriteConfig(config); err != nil {
+		if err := config.WriteConfig(); err != nil {
 			env.WriteLog(err.Error())
+			cobra.CheckErr(err)
 		}
 	}}
 

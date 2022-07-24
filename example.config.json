@@ -6,22 +6,18 @@
     "apps": {
         "spotify": {
             "enabled": true,
-            "name": "spotify",
             "path": "some/path/here"
         },
         "terminal": {
             "enabled": true,
-            "name": "terminal",
             "path": "some/path/here"
         },
         "firefox": {
             "enabled": true,
-            "name": "firefox",
             "path": "some/path/here"
         },
         "some-script": {
             "enabled": false,
-            "name": "some-script",
             "path": "some/path/here"
         }
     }
