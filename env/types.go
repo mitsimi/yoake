@@ -18,6 +18,6 @@ type App struct {
 }
 
 type Configuration struct {
-	Conf Config `mapstructure:"config"`
-	Apps []App  `mapstructure:"apps"`
+	Conf Config         `mapstructure:"config"`
+	Apps map[string]App `mapstructure:"apps"`
 }

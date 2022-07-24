@@ -23,7 +23,6 @@ var rootCmd = &cobra.Command{
 	Long:    `A simple yet intuitive cli tool for managing windows and linux start up applications.`,
 	Version: "0.1.0",
 	ValidArgs: []string{
-		"start", "stop",
 		"enable", "disable",
 		"add", "remove",
 		"list",
