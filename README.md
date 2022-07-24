@@ -29,14 +29,14 @@ Little cli program for easy and universal application start on startup for windo
 ## Features
 
 - [x] Initialize starigo
-- [ ] Add an application to startup
-- [ ] Remove an application from startup
+- [x] Add an application to startup
+- [x] Remove an application from startup
 - [ ] List all applications in startup
 - [ ] List information of a specific application
 - [x] Enable or disable an application from startup
 - [x] Enable or disable starigo startup
-- [ ] Show current set delay for startup applications
-- [ ] Change delay for startup applications
+- [x] Show current set delay for startup applications
+- [x] Change delay for startup applications
 
 ## Usage
 
