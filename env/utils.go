@@ -93,7 +93,7 @@ func LoadConfig() (config Configuration, err error) {
 	return
 }
 
-func WriteConfig(conf Configuration) (err error) {
+func (conf *Configuration) WriteConfig() (err error) {
 	viper.GetViper().Set("config", conf.Conf)
 	viper.GetViper().Set("apps", conf.Apps)
 
