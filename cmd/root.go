@@ -8,7 +8,6 @@ import (
 
 	"github.com/mitsimi/starigo/env"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 var (
@@ -37,10 +36,13 @@ func Execute() {
 
 func init() {
 	// Initialize startup directory and file
-	go initStartup()
+	//go initStartup()
 
 	// Initialize config directory and file
-	go initConfig()
+	_, err := env.LoadConfig()
+	if err != nil {
+		cobra.CheckErr(err)
+	}
 }
 
 func initStartup() {
@@ -77,45 +79,4 @@ func initStartup() {
 			env.WriteLog(err.Error())
 		}
 	}
-}
-
-// TODO: Initialize config file loading and management
-func initConfig() {
-	// Check if config directory exists
-	if _, err := os.Stat(env.ConfigDir()); os.IsNotExist(err) {
-		// Create config directory
-		err := os.Mkdir(env.ConfigDir(), 0755)
-		if err != nil {
-			env.WriteLog(err.Error())
-		}
-	}
-
-	// Configure viper
-	config := viper.New()
-	config.AddConfigPath(env.ConfigDir())
-	config.SetConfigType("json")
-	config.SetConfigName("config")
-
-	// Read config file
-	if err := viper.ReadInConfig(); err != nil {
-		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
-			// Config file not found; ignore error if desired
-			env.WriteLog("Config file not found")
-			env.WriteLog("Creating new config file")
-
-			// Write config file
-			err := config.WriteConfig()
-			if err != nil {
-				env.WriteLog(err.Error())
-			}
-
-		} else {
-			// Config file was found but another error was produced
-			env.WriteLog(err.Error())
-			cobra.CheckErr(err.Error())
-		}
-	}
-
-	// Config file found and successfully parsed
-
 }

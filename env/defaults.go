@@ -15,7 +15,9 @@ func UserHomeDir() string {
 
 func ConfigDir() string {
 	home, err := os.UserConfigDir()
-	cobra.CheckErr(err)
+	if err != nil {
+		fmt.Println(err)
+	}
 	return fmt.Sprintf("%s\\sg", home)
 }
 
@@ -44,5 +46,5 @@ func Linux_StartupDir() string {
 }
 
 func Linux_Desktop() string {
-	return "[Desktop Entry]\nType=Application\nName=StariGo\nExec=$HOME/go/bin/starigo\nStartupNotify=false\nTerminal=false"
+	return fmt.Sprintf("[Desktop Entry]\nType=Application\nName=StariGo\nExec=%s\\starigo\nStartupNotify=false\nTerminal=false", BinaryDir())
 }

@@ -6,13 +6,18 @@ type Startup struct {
 	Content string
 }
 
-type App struct {
-	Enabled bool
-	Name    string
-	Path    string
+type Config struct {
+	Enabled bool  `json:"enabled"`
+	Delay   int32 `json:"delay"`
 }
 
-type Config struct {
-	Enabled bool
-	Delay   int32
+type App struct {
+	Enabled bool   `json:"enabled"`
+	Name    string `json:"name"`
+	Path    string `json:"path"`
+}
+
+type Configuration struct {
+	Conf Config `json:"config"`
+	Apps []App  `json:"apps"`
 }
