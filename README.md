@@ -10,8 +10,6 @@ Little cli program for easy and universal application start on startup for windo
 
 [Find latest Release Here](https://github.com/mitsimi/stariGo/releases/latest)
 
-Or just download the binary from releases page and put it in your PATH.
-
 ---
 
 ## DISCLAIMER
@@ -25,18 +23,18 @@ Or just download the binary from releases page and put it in your PATH.
 
 ## Platforms Supported
 
-- [ ] Windows
-- [ ] Linux
+- [x] Windows
+- [x] Linux
 
 ## Features
 
-- [ ] Initialize starigo
+- [x] Initialize starigo
 - [ ] Add an application to startup
 - [ ] Remove an application from startup
 - [ ] List all applications in startup
-- [ ] List a specific added application
-- [ ] Enable or disable an application from startup
-- [ ] Enable or disable starigo startup
+- [ ] List information of a specific application
+- [x] Enable or disable an application from startup
+- [x] Enable or disable starigo startup
 - [ ] Show current set delay for startup applications
 - [ ] Change delay for startup applications
 
@@ -48,26 +46,18 @@ Or just download the binary from releases page and put it in your PATH.
     starigo help
 
     starigo add <app_name>
-    starigo rm <app_name>
+    starigo remove <app_name>
 
-    starigo list
-    starigo list <app_name>
+    starigo list [app_name]
 
-    starigo enable <app_name>
-    starigo disable <app_name>
+    starigo enable [app_name]
+    starigo disable [app_name]
 
-    starigo start
-    starigo stop
-
-    starigo delay
-    starigo delay <delay_time>
+    starigo delay [delay_time]
 ```
 
-### Initialize a starigo
+<br/>
 
-```sh
-$ starigo init
-```
 ### Add an application to startup
 
 ```sh
@@ -76,7 +66,7 @@ $ starigo add <app_name> <app_path>
 
 ### Remove an application from startup
 
-`remove` is also aliased as `rm`
+`rm` is an alias for `remove`
 
 ```sh
 $ starigo remove <app_name>
@@ -88,8 +78,7 @@ $ starigo rm <app_name>
 
 ### List all applications in startup
 
-`list` is also aliased as `ls` & `l`
-
+`ls` & `l` are aliases for `list`
 
 ```sh
 $ starigo list
@@ -103,7 +92,7 @@ $ starigo ls
 $ starigo l
 ```
 
-### List a specific added application
+### List information about a specific application
 
 ```sh
 $ starigo list <app_name>
@@ -117,45 +106,58 @@ $ starigo ls <app_name>
 $ starigo l <app_name>
 ```
 
-### Enable an application from startup
+### Enable starigo startup
 
-`enable` is also aliased as `en`
+`en` is an alias for `enable`
 
 ```sh
-$ starigo enable <app_name>
+$ starigo enable
 ```
 
 ```sh
-$ starigo en <app_name>
+$ starigo en
+```
+
+### Disable starigo startup
+
+`dis` is an alias for `disable`
+
+```sh
+$ starigo disable
+```
+
+```sh
+$ starigo dis
+```
+
+### Enable an application from startup
+
+`en` is an alias for `enable`
+
+```sh
+$ starigo enable [app_name]
+```
+
+```sh
+$ starigo en [app_name]
 ```
 
 ### Disable an application from startup
 
-`disable` is also aliased as `dis`
+`dis` is an alias for `disable`
 
 ```sh
-$ starigo disable <app_name>
+$ starigo disable [app_name]
 ```
 
 ```sh
-$ starigo dis <app_name>
+$ starigo dis [app_name]
 ```
 
-### Run starigo at startup
-
-```sh
-$ starigo start
-```
-
-### Stop starigo from running at startup
-
-```sh
-$ starigo stop
-```
 
 ### Check current delay for startup
 
-`delay` is also aliased as `d`
+`d` is an alias for `delay`
 
 ```sh
 $ starigo delay
@@ -175,7 +177,7 @@ $ starigo delay <delay_time>
 - Config file `config.json` is located in the standard location for config files of your operating system.
 - Log file `startup.log` is in the same directory as the config file.
 
-Default location:
+Default location for config file and log file:
 - Windows: %AppData%
 - Linux: ~/.config
 
