@@ -24,7 +24,7 @@ var enableCmd = &cobra.Command{
 			app.Enabled = true
 			config.Apps[args[0]] = app
 
-			fmt.Printf("%s is now enabled!", args[0])
+			showCmd.Run(cmd, args)
 		}
 		if err := config.WriteConfig(); err != nil {
 			env.WriteLog(err.Error())

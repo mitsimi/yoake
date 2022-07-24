@@ -31,7 +31,6 @@ var rootCmd = &cobra.Command{
 		"version",
 	},
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println(config)
 		if !config.Conf.Enabled {
 			fmt.Println("StariGo is disabled. Use 'starigo enable' to enable it.")
 			return
