@@ -30,6 +30,7 @@ var delayCmd = &cobra.Command{
 
 		fmt.Println("Delay is set to", config.Conf.Delay)
 	},
+	DisableFlagsInUseLine: true,
 }
 
 func init() {

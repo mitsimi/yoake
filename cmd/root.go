@@ -44,6 +44,7 @@ var rootCmd = &cobra.Command{
 			exec.Command(app.Path).Start()
 		}
 	},
+	DisableFlagsInUseLine: true,
 }
 
 func Execute() {

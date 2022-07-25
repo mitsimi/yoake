@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/mitsimi/starigo/env"
 	"github.com/spf13/cobra"
@@ -11,10 +12,11 @@ var addCmd = &cobra.Command{
 	Use:   "add <app_name> <app_executable_path>",
 	Short: "Add a new app to your startup list",
 	Long: `Add a new app to your startup list
-	For example: starigo add spotify %USERPROFILE%/Desktop/Spotify.exe`,
+For example: 
+	starigo add spotify %USERPROFILE%/Desktop/Spotify.exe`,
 	Args: cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
-		name := args[0]
+		name := strings.ToLower(args[0])
 		path := args[1]
 
 		if _, ok := config.Apps[name]; ok {
@@ -35,6 +37,7 @@ var addCmd = &cobra.Command{
 	PostRun: func(cmd *cobra.Command, args []string) {
 		showCmd.Run(cmd, []string{})
 	},
+	DisableFlagsInUseLine: true,
 }
 
 func init() {

@@ -1,11 +1,23 @@
 package cmd
 
 import (
+	"fmt"
 	"os"
+	"strings"
 
 	"github.com/jedib0t/go-pretty/v6/table"
 	"github.com/spf13/cobra"
 )
+
+const (
+	enabledStatus  = "Enabled"
+	disabledStatus = "Disabled"
+)
+
+var status map[bool]string = map[bool]string{
+	true:  enabledStatus,
+	false: disabledStatus,
+}
 
 var showCmd = &cobra.Command{
 	Use:     "show [app]",
@@ -20,33 +32,41 @@ var showCmd = &cobra.Command{
 
 		if len(args) == 0 || args[0] == "all" {
 			for name, app := range config.Apps {
-				var status string
-				if app.Enabled {
-					status = "enabled"
-				} else {
-					status = "disabled"
-				}
-				t.AppendRow(table.Row{name, status, app.Path})
+				t.AppendRow(table.Row{upperName(name), status[app.Enabled], app.Path})
 			}
 			t.SetStyle(table.StyleLight)
+			t.SetAutoIndex(true)
+			t.SortBy([]table.SortBy{
+				{Name: "Status", Mode: table.Dsc},
+				{Name: "Name", Mode: table.Asc},
+			})
 			t.Render()
 			return
 		}
 
-		app := config.Apps[args[0]]
-		var status string
-		if app.Enabled {
-			status = "enabled"
-		} else {
-			status = "disabled"
+		app, ok := config.Apps[args[0]]
+		if !ok {
+			fmt.Println("\033[31;1;3mApp not found!\033[0m")
+			return
 		}
-		t.AppendRow(table.Row{args[0], status, app.Path})
+
+		t.AppendRow(table.Row{upperName(args[0]), status[app.Enabled], app.Path})
 
 		t.SetStyle(table.StyleLight)
 		t.Render()
 	},
+	DisableFlagsInUseLine: true,
 }
 
 func init() {
 	rootCmd.AddCommand(showCmd)
+}
+
+func upperName(name string) string {
+	var upperName strings.Builder
+	for _, str := range strings.Split(name, " ") {
+		upperName.WriteString(strings.ToUpper(str[0:1]) + str[1:])
+		upperName.WriteString(" ")
+	}
+	return upperName.String()
 }

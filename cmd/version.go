@@ -13,6 +13,7 @@ var versionCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Printf("Starigo Application Autostart Manager v%s\n", rootCmd.Version)
 	},
+	DisableFlagsInUseLine: true,
 }
 
 func init() {

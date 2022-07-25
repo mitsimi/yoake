@@ -3,6 +3,7 @@ package env
 import (
 	"fmt"
 	"os"
+	"runtime"
 
 	"github.com/spf13/cobra"
 )
@@ -23,7 +24,14 @@ func ConfigDir() string {
 	if err != nil {
 		fmt.Println(err)
 	}
-	return fmt.Sprintf("%s\\sg", home)
+
+	switch runtime.GOOS {
+	case "windows": // Windows
+		return fmt.Sprintf("%s\\starigo", home)
+	case "linux": // Linux
+		return fmt.Sprintf("%s/starigo", home)
+	}
+	return ""
 }
 
 func ConfigFile() string {
@@ -43,7 +51,11 @@ func Win_StartupDir() string {
 }
 
 func Win_Script() string {
-	return fmt.Sprintf("Set WshShell = CreateObject(\"WScript.Shell\")\nWshShell.Run chr(34) & \"%s\\starigo.exe\" & Chr(34), 0\nSet WshShell = Nothing", BinaryDir())
+	return fmt.Sprintf(
+		"Set WshShell = CreateObject(\"WScript.Shell\")\n"+
+			"WshShell.Run chr(34) & \"%s\\starigo.exe\" & Chr(34), 0\n"+
+			"Set WshShell = Nothing", BinaryDir(),
+	)
 }
 
 func Linux_StartupDir() string {
@@ -51,5 +63,12 @@ func Linux_StartupDir() string {
 }
 
 func Linux_Desktop() string {
-	return fmt.Sprintf("[Desktop Entry]\nType=Application\nName=StariGo\nExec=%s\\starigo\nStartupNotify=false\nTerminal=false", BinaryDir())
+	return fmt.Sprintf(
+		"[Desktop Entry]\n"+
+			"Type=Application\n"+
+			"Name=StariGo\n"+
+			"Exec=%s\\starigo\n"+
+			"StartupNotify=false\n"+
+			"Terminal=false", BinaryDir(),
+	)
 }

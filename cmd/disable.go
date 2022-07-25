@@ -32,6 +32,7 @@ var disableCmd = &cobra.Command{
 			cobra.CheckErr(err)
 		}
 	},
+	DisableFlagsInUseLine: true,
 }
 
 func init() {

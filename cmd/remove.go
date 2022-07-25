@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/mitsimi/starigo/env"
 	"github.com/spf13/cobra"
@@ -15,7 +16,7 @@ var removeCmd = &cobra.Command{
 	For example: starigo remove spotify`,
 	Args: cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		name := args[0]
+		name := strings.ToLower(args[0])
 
 		if _, ok := config.Apps[name]; !ok {
 			fmt.Printf("App %s doesn't exists.\n", name)
@@ -29,6 +30,7 @@ var removeCmd = &cobra.Command{
 			cobra.CheckErr(err)
 		}
 	},
+	DisableFlagsInUseLine: true,
 }
 
 func init() {

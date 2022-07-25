@@ -5,10 +5,10 @@ Little cli program for easy and universal application start on startup for windo
 ## Install
 
 ```sh
- go install github.com/mitsimi/starigo@latest
+go install github.com/mitsimi/starigo@latest
 ```
 
-[Find latest Release Here](https://github.com/mitsimi/stariGo/releases/latest)
+Or download the [latest release from GitHub Releases](https://github.com/mitsimi/starigo/releases/latest) and put it into `%USERPROFILE%/go/bin` for Windows or `$HOME/go/bin` for Linux. Make sure the directory is added to your PATH. Then you can use `starigo` command to use the application.
 
 ---
 
