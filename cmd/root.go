@@ -2,11 +2,8 @@ package cmd
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/exec"
-	"path/filepath"
-	"runtime"
 	"time"
 
 	"github.com/mitsimi/starigo/env"
@@ -14,8 +11,7 @@ import (
 )
 
 var (
-	config  env.Configuration
-	startUp env.Startup
+	config env.Configuration
 )
 
 var rootCmd = &cobra.Command{
@@ -24,6 +20,7 @@ var rootCmd = &cobra.Command{
 	Long:    `A simple yet intuitive cli tool for managing windows and linux start up applications.`,
 	Version: "1.0.0",
 	ValidArgs: []string{
+		"setup",
 		"enable", "disable",
 		"add", "remove",
 		"list",
@@ -56,49 +53,10 @@ func Execute() {
 }
 
 func init() {
-	// Initialize startup directory and file
-	go initStartup()
-
 	// Initialize config directory and file
 	var err error
 	config, err = env.LoadConfig()
 	if err != nil {
 		cobra.CheckErr(err)
-	}
-}
-
-func initStartup() {
-	// Check operating system
-	switch runtime.GOOS {
-	case "windows": // Windows
-		startUp.Dir = env.Win_StartupDir()
-		startUp.File = filepath.Join(startUp.Dir, "starigo.bat")
-		startUp.Content = env.Win_Script()
-
-	case "linux": // Linux
-		startUp.Dir = env.Linux_StartupDir()
-		startUp.File = filepath.Join(startUp.Dir, "starigo.desktop")
-		startUp.Content = env.Linux_Desktop()
-
-	default: // Other (Darwin, FreeBSD, OpenBSD, Plan9, etc.)
-		cobra.CheckErr(fmt.Errorf("unsupported OS: %s", runtime.GOOS))
-	}
-
-	// Check if startup directory exists
-	if _, err := os.Stat(startUp.Dir); os.IsNotExist(err) {
-		// Create startup directory
-		err := os.Mkdir(startUp.Dir, 0755)
-		if err != nil {
-			env.WriteLog(err.Error())
-		}
-	}
-
-	// Check if startup file exists
-	if _, err := os.Stat(startUp.File); os.IsNotExist(err) {
-		// Write startup file
-		err := ioutil.WriteFile(startUp.File, []byte(startUp.Content), 0644)
-		if err != nil {
-			env.WriteLog(err.Error())
-		}
 	}
 }

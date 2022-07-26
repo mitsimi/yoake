@@ -3,9 +3,9 @@ package cmd
 import (
 	"fmt"
 	"os"
-	"strings"
 
 	"github.com/jedib0t/go-pretty/v6/table"
+	"github.com/mitsimi/starigo/env"
 	"github.com/spf13/cobra"
 )
 
@@ -32,7 +32,7 @@ var showCmd = &cobra.Command{
 
 		if len(args) == 0 || args[0] == "all" {
 			for name, app := range config.Apps {
-				t.AppendRow(table.Row{upperName(name), status[app.Enabled], app.Path})
+				t.AppendRow(table.Row{env.UpperName(name), status[app.Enabled], app.Path})
 			}
 			t.SetStyle(table.StyleLight)
 			t.SetAutoIndex(true)
@@ -50,7 +50,7 @@ var showCmd = &cobra.Command{
 			return
 		}
 
-		t.AppendRow(table.Row{upperName(args[0]), status[app.Enabled], app.Path})
+		t.AppendRow(table.Row{env.UpperName(args[0]), status[app.Enabled], app.Path})
 
 		t.SetStyle(table.StyleLight)
 		t.Render()
@@ -60,13 +60,4 @@ var showCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(showCmd)
-}
-
-func upperName(name string) string {
-	var upperName strings.Builder
-	for _, str := range strings.Split(name, " ") {
-		upperName.WriteString(strings.ToUpper(str[0:1]) + str[1:])
-		upperName.WriteString(" ")
-	}
-	return upperName.String()
 }

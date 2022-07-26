@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/spf13/viper"
@@ -102,4 +103,13 @@ func (conf *Configuration) WriteConfig() (err error) {
 		return err
 	}
 	return nil
+}
+
+func UpperName(name string) string {
+	var upperName strings.Builder
+	for _, str := range strings.Split(name, " ") {
+		upperName.WriteString(strings.ToUpper(str[0:1]) + str[1:])
+		upperName.WriteString(" ")
+	}
+	return upperName.String()
 }

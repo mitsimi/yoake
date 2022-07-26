@@ -20,7 +20,7 @@ For example:
 		path := args[1]
 
 		if _, ok := config.Apps[name]; ok {
-			fmt.Printf("App %s already exists.\n", name)
+			fmt.Printf("App \033[94m%s\033[0malready exists.\n", env.UpperName(name))
 			return
 		}
 

@@ -45,6 +45,8 @@ Or download the [latest release from GitHub Releases](https://github.com/mitsimi
 ```sh
     starigo help
 
+    starigo setup
+
     starigo add <app_name>
     starigo remove <app_name>
 
@@ -57,6 +59,18 @@ Or download the [latest release from GitHub Releases](https://github.com/mitsimi
 ```
 
 <br/>
+
+### Setup the autostart on login
+
+`init` is an alias for `setup`
+
+```sh
+$ starigo setup
+```
+
+```sh
+$ starigo init
+```
 
 ### Add an application to startup
 
@@ -177,8 +191,10 @@ delay is in seconds.
 $ starigo delay <delay_time>
 ```
 
-## Defaults
+<br/>
 
+## Defaults
+---
 - Delay is set to 10 seconds
 - Config file `config.json` is located in the standard location for config files of your operating system.
 - Log file `startup.log` is in the same directory as the config file.
@@ -187,6 +203,28 @@ Default location for config file and log file:
 - Windows: %AppData%
 - Linux: ~/.config
 
+## Example Config File
+---
+```json
+{
+    "config": {
+        "Enabled": true,
+        "Delay": 10
+    },
+    "apps": {
+        "app1": {
+            "Enabled": true,
+            "Path": "C:\\app1\\app1.exe"
+        },
+        "app2": {	
+            "Enabled": false,
+            "Path": "/usr/share/bin/app2"
+        }
+    }
+}
+```
+
 ## LICENSE
+---
 Starigo is released under the GPL-3.0 license. See [LICENSE](https://github.com/mitsimi/starigo/blob/main/LICENSE)
 
