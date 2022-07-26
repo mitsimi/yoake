@@ -27,4 +27,3 @@ jobs:
         goversion: "1.16"
         binary_name: "starigo"
         ldflags: "-s -w"
-        extra_files: LICENSE README.md
