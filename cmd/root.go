@@ -52,6 +52,14 @@ func Execute() {
 	}
 }
 
+func ExecuteArgs(args []string) {
+	rootCmd.SetArgs(args)
+	if err := rootCmd.Execute(); err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+}
+
 func init() {
 	// Initialize config directory and file
 	var err error

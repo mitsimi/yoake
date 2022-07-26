@@ -1,6 +1,8 @@
 package main
 
-import "github.com/mitsimi/starigo/cmd"
+import (
+	"github.com/mitsimi/starigo/cmd"
+)
 
 func main() {
 	cmd.Execute()

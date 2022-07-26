@@ -6,12 +6,13 @@ import (
 	"runtime"
 	"testing"
 
+	"github.com/mitsimi/starigo/cmd"
 	"github.com/mitsimi/starigo/env"
 )
 
 func TestApp(t *testing.T) {
 	// Run the app
-	main()
+	cmd.ExecuteArgs([]string{"init"})
 
 	_os := runtime.GOOS
 	// Check if STARTUP directory and file  created
