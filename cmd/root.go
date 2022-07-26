@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"runtime"
 	"time"
 
@@ -71,12 +72,12 @@ func initStartup() {
 	switch runtime.GOOS {
 	case "windows": // Windows
 		startUp.Dir = env.Win_StartupDir()
-		startUp.File = startUp.Dir + "\\starigo.bat"
+		startUp.File = filepath.Join(startUp.Dir, "starigo.bat")
 		startUp.Content = env.Win_Script()
 
 	case "linux": // Linux
 		startUp.Dir = env.Linux_StartupDir()
-		startUp.File = startUp.Dir + "/starigo.desktop"
+		startUp.File = filepath.Join(startUp.Dir, "starigo.desktop")
 		startUp.Content = env.Linux_Desktop()
 
 	default: // Other (Darwin, FreeBSD, OpenBSD, Plan9, etc.)
