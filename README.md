@@ -1,6 +1,6 @@
 # StariGo - A Simple Tool for start up applications
 
-Little cli program for easy and universal application start on startup for windows and linux.
+Little cli program for easy and universal application start on login for windows and linux.
 
 ## Install
 
