@@ -34,8 +34,6 @@ func TestApp(t *testing.T) {
 		if _, err := os.Stat(filepath.Join(dir, "starigo.desktop")); os.IsNotExist(err) {
 			t.Errorf("Linux script not found, %v", err)
 		}
-	default:
-		return
 	}
 
 	// Check if CONFIG directory and file created
