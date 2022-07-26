@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   test:
-    name: Testing application
+    name: Test on ${{ matrix.os }} Go Version ${{ matrix.go }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -12,7 +12,6 @@ jobs:
         go: [ '1.18', '1.17', '1.16' ]
         os: [ ubuntu-latest, macOS-latest, windows-latest ]
     
-    name: ${{ matrix.os }} Go ${{ matrix.go }} Tests
     steps:
     - uses: actions/checkout@v3
 
