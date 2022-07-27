@@ -17,7 +17,7 @@ var delayCmd = &cobra.Command{
 		if len(args) != 0 {
 			newDelay, err := strconv.Atoi(args[0])
 			if err != nil {
-				fmt.Println("Invalid delay value")
+				fmt.Println("\033[31;1mInvalid delay value\033[0m")
 				return
 			}
 			config.Conf.Delay = newDelay
@@ -28,7 +28,7 @@ var delayCmd = &cobra.Command{
 			}
 		}
 
-		fmt.Println("Delay is set to", config.Conf.Delay)
+		fmt.Printf("Delay is set to \033[93m%v\033[0m seconds.", config.Conf.Delay)
 	},
 	DisableFlagsInUseLine: true,
 }
