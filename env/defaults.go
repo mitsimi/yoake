@@ -17,16 +17,15 @@ const (
 func UserHomeDir() string {
 	home, err := os.UserHomeDir()
 	cobra.CheckErr(err)
+
 	return home
 }
 
 func ConfigDir() string {
-	home, err := os.UserConfigDir()
-	if err != nil {
-		fmt.Println(err)
-	}
+	dir, err := os.UserConfigDir()
+	cobra.CheckErr(err)
 
-	return filepath.Join(home, "starigo")
+	return filepath.Join(dir, "starigo")
 }
 
 func ConfigFile() string {
