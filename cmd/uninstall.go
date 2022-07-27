@@ -37,7 +37,13 @@ var uninstallCmd = &cobra.Command{
 }
 
 func uninstallWindows() {
-	err := exec.Command("cmd", "/C", "del", filepath.Join(env.BinaryDir(), "starigo.exe")).Start()
+	err := os.Remove(filepath.Join(env.Win_StartupDir(), "starigo.bat"))
+	if err != nil {
+		env.WriteLog(err.Error())
+		cobra.CheckErr(err)
+	}
+
+	err = exec.Command("cmd", "/C", "del", filepath.Join(env.BinaryDir(), "starigo.exe")).Start()
 	if err != nil {
 		env.WriteLog(err.Error())
 		cobra.CheckErr(err)
@@ -45,7 +51,13 @@ func uninstallWindows() {
 }
 
 func uninstallLinux() {
-	err := exec.Command("rm", filepath.Join(env.BinaryDir(), "starigo")).Start()
+	err := os.Remove(filepath.Join(env.Linux_StartupDir(), "starigo.desktop"))
+	if err != nil {
+		env.WriteLog(err.Error())
+		cobra.CheckErr(err)
+	}
+
+	err = exec.Command("rm", filepath.Join(env.BinaryDir(), "starigo")).Start()
 	if err != nil {
 		env.WriteLog(err.Error())
 		cobra.CheckErr(err)
