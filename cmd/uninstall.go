@@ -6,10 +6,13 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
+	"strings"
 
 	"github.com/mitsimi/starigo/env"
 	"github.com/spf13/cobra"
 )
+
+var confirm string
 
 var uninstallCmd = &cobra.Command{
 	Use:   "uninstall",
@@ -17,6 +20,19 @@ var uninstallCmd = &cobra.Command{
 	Long:  ``,
 	Args:  cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
+		// Prompt for confirmation
+		fmt.Print("\033[31mAll files will be deleted permanently. Are you sure you want to uninstall Starigo? (y/N) \033[0m")
+		fmt.Scanln(&confirm)
+		confirm = strings.ToLower(confirm)
+		if confirm == "" {
+			confirm = "n"
+		}
+
+		if confirm[:1] != "y" {
+			fmt.Println("\n\033[31mAborted.\033[0m")
+			return
+		}
+
 		fmt.Print("Removing config...")
 		err := os.RemoveAll(env.ConfigDir())
 		cobra.CheckErr(err)
