@@ -21,7 +21,7 @@ var uninstallCmd = &cobra.Command{
 	Args:  cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
 		// Prompt for confirmation
-		fmt.Print("\033[31mAre you sure you want to uninstall Starigo? (y/N) \033[0m")
+		fmt.Print("\033[31mAll files will be deleted permanently. Are you sure you want to uninstall Starigo? (y/N) \033[0m")
 		fmt.Scanln(&confirm)
 		confirm = strings.ToLower(confirm)
 		if confirm == "" {
