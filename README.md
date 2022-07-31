@@ -47,7 +47,7 @@ Or download the [latest release from GitHub Releases](https://github.com/mitsimi
 
     starigo setup
 
-    starigo add <app_name>
+    starigo add <app_name> <app_path>
     starigo remove <app_name>
 
     starigo show [app_name]
@@ -115,15 +115,15 @@ $ starigo ls
 ### List information about a specific application
 
 ```sh
-$ starigo show
+$ starigo show <app_name>
 ```
 
 ```sh
-$ starigo list
+$ starigo list <app_name>
 ```
 
 ```sh
-$ starigo ls
+$ starigo ls <app_name>
 ```
 
 ### Enable starigo startup
