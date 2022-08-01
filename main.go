@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/mitsimi/starigo/cmd"
+	"github.com/mitsimi/yoake/cmd"
 )
 
 func main() {

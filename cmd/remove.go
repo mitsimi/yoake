@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/mitsimi/starigo/env"
+	"github.com/mitsimi/yoake/env"
 	"github.com/spf13/cobra"
 )
 
@@ -13,7 +13,7 @@ var removeCmd = &cobra.Command{
 	Aliases: []string{"rm"},
 	Short:   "Remove an app from your startup list",
 	Long: `Remove an app from your startup list
-	For example: starigo remove spotify`,
+	For example: yoake remove spotify`,
 	Args: cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		name := strings.ToLower(args[0])

@@ -1,4 +1,4 @@
-module github.com/mitsimi/starigo
+module github.com/mitsimi/yoake
 
 go 1.16
 

@@ -6,7 +6,7 @@ import (
 	"os/exec"
 	"time"
 
-	"github.com/mitsimi/starigo/env"
+	"github.com/mitsimi/yoake/env"
 	"github.com/spf13/cobra"
 )
 
@@ -15,7 +15,7 @@ var (
 )
 
 var rootCmd = &cobra.Command{
-	Use:     "starigo",
+	Use:     "yoake",
 	Short:   "Little cli program for easy and universal application start on startup",
 	Long:    `A simple yet intuitive cli tool for managing windows and linux start up applications.`,
 	Version: "1.0.0",
@@ -30,7 +30,7 @@ var rootCmd = &cobra.Command{
 	},
 	Run: func(cmd *cobra.Command, args []string) {
 		if !config.Conf.Enabled {
-			fmt.Println("StariGo is disabled. Use 'starigo enable' to enable it.")
+			fmt.Println("yoake is disabled. Use 'yoake enable' to enable it.")
 			return
 		}
 

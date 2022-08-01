@@ -6,8 +6,8 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/mitsimi/starigo/cmd"
-	"github.com/mitsimi/starigo/env"
+	"github.com/mitsimi/yoake/cmd"
+	"github.com/mitsimi/yoake/env"
 )
 
 func TestApp(t *testing.T) {
@@ -23,7 +23,7 @@ func TestApp(t *testing.T) {
 		if _, err := os.Stat(env.Win_StartupDir()); os.IsNotExist(err) {
 			t.Errorf("Windows startup directory not found, %v", err)
 		}
-		if _, err := os.Stat(filepath.Join(dir, "starigo.bat")); os.IsNotExist(err) {
+		if _, err := os.Stat(filepath.Join(dir, "yoake.bat")); os.IsNotExist(err) {
 			t.Errorf("Windows script not found, %v", err)
 		}
 	case "linux":
@@ -32,7 +32,7 @@ func TestApp(t *testing.T) {
 		if _, err := os.Stat(env.Linux_StartupDir()); os.IsNotExist(err) {
 			t.Errorf("Linux startup directory not found, %v", err)
 		}
-		if _, err := os.Stat(filepath.Join(dir, "starigo.desktop")); os.IsNotExist(err) {
+		if _, err := os.Stat(filepath.Join(dir, "yoake.desktop")); os.IsNotExist(err) {
 			t.Errorf("Linux script not found, %v", err)
 		}
 	}

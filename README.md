@@ -1,14 +1,16 @@
-# StariGo - A Simple Tool for start up applications
+# Yoake - A Simple Tool for start up applications
 
 Little cli program for easy and universal application start on login for windows and linux.
+
+Yoake (**夜明け**) is a noun meaning the dawn in Japanese. This project get started in the early days of the windows operating system.
 
 ## Install
 
 ```sh
-go install github.com/mitsimi/starigo@latest
+go install github.com/mitsimi/yoake@latest
 ```
 
-Or download the [latest release from GitHub Releases](https://github.com/mitsimi/starigo/releases/latest) and put it into `%USERPROFILE%/go/bin` for Windows or `$HOME/go/bin` for Linux. Make sure the directory is added to your PATH. Then you can use `starigo` command to use the application.
+Or download the [latest release from GitHub Releases](https://github.com/mitsimi/yoake/releases/latest) and put it into `%USERPROFILE%/go/bin` for Windows or `$HOME/go/bin` for Linux. Make sure the directory is added to your PATH. Then you can use `yoake` command to use the application.
 
 ---
 
@@ -28,13 +30,13 @@ Or download the [latest release from GitHub Releases](https://github.com/mitsimi
 
 ## Features
 
-- [x] Initialize starigo
+- [x] Initialize yoake
 - [x] Add an application to startup
 - [x] Remove an application from startup
 - [x] List all applications in startup
 - [x] List information of a specific application
 - [x] Enable or disable an application from startup
-- [x] Enable or disable starigo startup
+- [x] Enable or disable yoake startup
 - [x] Show current set delay for startup applications
 - [x] Change delay for startup applications
 
@@ -43,19 +45,19 @@ Or download the [latest release from GitHub Releases](https://github.com/mitsimi
 ### Available Commands
 
 ```sh
-    starigo help
+    yoake help
 
-    starigo setup
+    yoake setup
 
-    starigo add <app_name> <app_path>
-    starigo remove <app_name>
+    yoake add <app_name> <app_path>
+    yoake remove <app_name>
 
-    starigo show [app_name]
+    yoake show [app_name]
 
-    starigo enable [app_name]
-    starigo disable [app_name]
+    yoake enable [app_name]
+    yoake disable [app_name]
 
-    starigo delay [delay_time]
+    yoake delay [delay_time]
 ```
 
 <br/>
@@ -65,17 +67,17 @@ Or download the [latest release from GitHub Releases](https://github.com/mitsimi
 `init` is an alias for `setup`
 
 ```sh
-$ starigo setup
+$ yoake setup
 ```
 
 ```sh
-$ starigo init
+$ yoake init
 ```
 
 ### Add an application to startup
 
 ```sh
-$ starigo add <app_name> <app_path>
+$ yoake add <app_name> <app_path>
 ```
 
 ### Remove an application from startup
@@ -83,11 +85,11 @@ $ starigo add <app_name> <app_path>
 `rm` is an alias for `remove`
 
 ```sh
-$ starigo remove <app_name>
+$ yoake remove <app_name>
 ```
 
 ```sh
-$ starigo rm <app_name>
+$ yoake rm <app_name>
 ```
 
 ### List all applications in startup
@@ -95,19 +97,19 @@ $ starigo rm <app_name>
 `show` is aliased as `list`, `ls`
 
 ```sh
-$ starigo show
+$ yoake show
 ```
 is equivalent to
 ```sh
-$ starigo show all
+$ yoake show all
 ```
 
 ```sh
-$ starigo list
+$ yoake list
 ```
 
 ```sh
-$ starigo ls
+$ yoake ls
 ```
 
 
@@ -115,39 +117,39 @@ $ starigo ls
 ### List information about a specific application
 
 ```sh
-$ starigo show <app_name>
+$ yoake show <app_name>
 ```
 
 ```sh
-$ starigo list <app_name>
+$ yoake list <app_name>
 ```
 
 ```sh
-$ starigo ls <app_name>
+$ yoake ls <app_name>
 ```
 
-### Enable starigo startup
+### Enable yoake startup
 
 `en` is an alias for `enable`
 
 ```sh
-$ starigo enable
+$ yoake enable
 ```
 
 ```sh
-$ starigo en
+$ yoake en
 ```
 
-### Disable starigo startup
+### Disable yoake startup
 
 `dis` is an alias for `disable`
 
 ```sh
-$ starigo disable
+$ yoake disable
 ```
 
 ```sh
-$ starigo dis
+$ yoake dis
 ```
 
 ### Enable an application from startup
@@ -155,11 +157,11 @@ $ starigo dis
 `en` is an alias for `enable`
 
 ```sh
-$ starigo enable [app_name]
+$ yoake enable [app_name]
 ```
 
 ```sh
-$ starigo en [app_name]
+$ yoake en [app_name]
 ```
 
 ### Disable an application from startup
@@ -167,11 +169,11 @@ $ starigo en [app_name]
 `dis` is an alias for `disable`
 
 ```sh
-$ starigo disable [app_name]
+$ yoake disable [app_name]
 ```
 
 ```sh
-$ starigo dis [app_name]
+$ yoake dis [app_name]
 ```
 
 
@@ -180,7 +182,7 @@ $ starigo dis [app_name]
 `d` is an alias for `delay`
 
 ```sh
-$ starigo delay
+$ yoake delay
 ```
 
 ### Set new delay for startup
@@ -188,7 +190,7 @@ $ starigo delay
 delay is in seconds.
 
 ```sh
-$ starigo delay <delay_time>
+$ yoake delay <delay_time>
 ```
 
 <br/>
@@ -226,5 +228,5 @@ Default location for config file and log file:
 
 ## LICENSE
 ---
-Starigo is released under the GPL-3.0 license. See [LICENSE](https://github.com/mitsimi/starigo/blob/main/LICENSE)
+Yoake is released under the GPL-3.0 license. See [LICENSE](https://github.com/mitsimi/yoake/blob/main/LICENSE)
 

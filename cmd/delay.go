@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/mitsimi/starigo/env"
+	"github.com/mitsimi/yoake/env"
 	"github.com/spf13/cobra"
 )
 

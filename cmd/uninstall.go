@@ -8,7 +8,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/mitsimi/starigo/env"
+	"github.com/mitsimi/yoake/env"
 	"github.com/spf13/cobra"
 )
 
@@ -21,7 +21,7 @@ var uninstallCmd = &cobra.Command{
 	Args:  cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
 		// Prompt for confirmation
-		fmt.Print("\033[31mAll files will be deleted permanently. Are you sure you want to uninstall Starigo? (y/N) \033[0m")
+		fmt.Print("\033[31mAll files will be deleted permanently. Are you sure you want to uninstall yoake? (y/N) \033[0m")
 		fmt.Scanln(&confirm)
 		confirm = strings.ToLower(confirm)
 		if confirm == "" {
@@ -53,13 +53,13 @@ var uninstallCmd = &cobra.Command{
 }
 
 func uninstallWindows() {
-	err := os.Remove(filepath.Join(env.Win_StartupDir(), "starigo.bat"))
+	err := os.Remove(filepath.Join(env.Win_StartupDir(), "yoake.bat"))
 	if err != nil {
 		env.WriteLog(err.Error())
 		cobra.CheckErr(err)
 	}
 
-	err = exec.Command("cmd", "/C", "del", filepath.Join(env.BinaryDir(), "starigo.exe")).Start()
+	err = exec.Command("cmd", "/C", "del", filepath.Join(env.BinaryDir(), "yoake.exe")).Start()
 	if err != nil {
 		env.WriteLog(err.Error())
 		cobra.CheckErr(err)
@@ -67,13 +67,13 @@ func uninstallWindows() {
 }
 
 func uninstallLinux() {
-	err := os.Remove(filepath.Join(env.Linux_StartupDir(), "starigo.desktop"))
+	err := os.Remove(filepath.Join(env.Linux_StartupDir(), "yoake.desktop"))
 	if err != nil {
 		env.WriteLog(err.Error())
 		cobra.CheckErr(err)
 	}
 
-	err = exec.Command("rm", filepath.Join(env.BinaryDir(), "starigo")).Start()
+	err = exec.Command("rm", filepath.Join(env.BinaryDir(), "yoake")).Start()
 	if err != nil {
 		env.WriteLog(err.Error())
 		cobra.CheckErr(err)

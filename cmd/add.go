@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/mitsimi/starigo/env"
+	"github.com/mitsimi/yoake/env"
 	"github.com/spf13/cobra"
 )
 
@@ -13,7 +13,7 @@ var addCmd = &cobra.Command{
 	Short: "Add a new app to your startup list",
 	Long: `Add a new app to your startup list
 For example: 
-	starigo add spotify %USERPROFILE%/Desktop/Spotify.exe`,
+	yoake add spotify %USERPROFILE%/Desktop/Spotify.exe`,
 	Args: cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		name := strings.ToLower(args[0])

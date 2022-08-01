@@ -25,7 +25,7 @@ func ConfigDir() string {
 	dir, err := os.UserConfigDir()
 	cobra.CheckErr(err)
 
-	return filepath.Join(dir, "starigo")
+	return filepath.Join(dir, "yoake")
 }
 
 func ConfigFile() string {
@@ -49,7 +49,7 @@ func Win_StartupDir() string {
 }
 
 func Win_Script() string {
-	path := filepath.Join(BinaryDir(), "starigo.exe")
+	path := filepath.Join(BinaryDir(), "yoake.exe")
 	return fmt.Sprintf("@echo off\nstart %s", path)
 }
 
@@ -58,11 +58,11 @@ func Linux_StartupDir() string {
 }
 
 func Linux_Desktop() string {
-	path := filepath.Join(BinaryDir(), "starigo")
+	path := filepath.Join(BinaryDir(), "yoake")
 	return fmt.Sprintf(
 		"[Desktop Entry]\n"+
 			"Type=Application\n"+
-			"Name=StariGo\n"+
+			"Name=Yoake\n"+
 			"Exec=%s\n"+
 			"StartupNotify=false\n"+
 			"Terminal=false",

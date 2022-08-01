@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/mitsimi/starigo/env"
+	"github.com/mitsimi/yoake/env"
 	"github.com/spf13/cobra"
 )
 
@@ -17,7 +17,7 @@ var startUp env.Startup
 var setupCmd = &cobra.Command{
 	Use:     "setup",
 	Aliases: []string{"init"},
-	Short:   "Setup starigo autostart",
+	Short:   "Setup Yoake's autostart",
 	Long:    ``,
 	Args:    cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
@@ -25,12 +25,12 @@ var setupCmd = &cobra.Command{
 		switch runtime.GOOS {
 		case "windows": // Windows
 			startUp.Dir = env.Win_StartupDir()
-			startUp.File = filepath.Join(startUp.Dir, "starigo.bat")
+			startUp.File = filepath.Join(startUp.Dir, "yoake.bat")
 			startUp.Content = env.Win_Script()
 
 		case "linux": // Linux
 			startUp.Dir = env.Linux_StartupDir()
-			startUp.File = filepath.Join(startUp.Dir, "starigo.desktop")
+			startUp.File = filepath.Join(startUp.Dir, "yoake.desktop")
 			startUp.Content = env.Linux_Desktop()
 
 		default: // Other (Darwin, FreeBSD, OpenBSD, Plan9, etc.)
