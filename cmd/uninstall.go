@@ -16,8 +16,8 @@ var confirm string
 
 var uninstallCmd = &cobra.Command{
 	Use:   "uninstall",
-	Short: "",
-	Long:  ``,
+	Short: "Uninstalls the application",
+	Long:  `Removes all files and directories created by the application. No recovery is possible.`,
 	Args:  cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
 		// Prompt for confirmation
