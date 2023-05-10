@@ -1,6 +1,6 @@
 # Yoake - A Simple Tool for start up applications
 
-Little cli program for easy and universal application start on login for windows and linux.
+Little CLI program for easy and universal application start on login for windows and linux.
 
 Yoake (**夜明け**) is a noun meaning the dawn in Japanese. This project get started in the early days of the windows operating system.
 
